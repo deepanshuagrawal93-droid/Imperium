@@ -16,9 +16,9 @@ pipeline {
         stage('Setup VirtualEnv') {
             steps {
                 bat """
-                if not exist ${VENV_DIR} (
-                    python -m venv ${VENV_DIR}
-                )
+                    if not exist ${VENV_DIR} (
+                        python -m venv ${VENV_DIR}
+                    )
                 """
             }
         }
@@ -26,8 +26,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat """
-                ${PYTHON} -m pip install --upgrade pip
-                ${PYTHON} -m pip install -r requirements.txt
+                    ${PYTHON} -m pip install --upgrade pip
+                    ${PYTHON} -m pip install -r requirements.txt
                 """
             }
         }
@@ -35,22 +35,28 @@ pipeline {
         stage('Run Robot Tests') {
             steps {
                 bat """
-                ${PYTHON} -m robot TestAutomation/
+                    ${PYTHON} -m robot TestAutomation/
                 """
             }
         }
 
         stage('Publish Reports') {
             steps {
-                publishHTML([[
+                publishHTML([
+                    allowMissing: true,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
                     reportDir: 'TestAutomation/report',
                     reportFiles: 'report.html',
                     reportName: 'Robot Framework Report'
-                ]])
+                ])
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'TestA
+            archiveArtifacts artifacts: 'TestAutomation/output.xml,TestAutomation/report.html,TestAutomation/log.html', allowEmptyArchive: true
+        }
+    }
+}
