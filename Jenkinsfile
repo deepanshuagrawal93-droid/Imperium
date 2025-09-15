@@ -35,7 +35,7 @@ pipeline {
         stage('Run Robot Tests') {
             steps {
                 bat """
-                ${PYTHON} -m robot APIAutomation.robot
+                ${PYTHON} -m robot TestAutomation/
                 """
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage('Publish Reports') {
             steps {
                 publishHTML([[
-                    reportDir: 'report',
+                    reportDir: 'TestAutomation/report',
                     reportFiles: 'report.html',
                     reportName: 'Robot Framework Report'
                 ]])
@@ -53,7 +53,4 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: '**/output.xml, **/report.html, **/log.html', allowEmptyArchive: true
-        }
-    }
-}
+            archiveArtifacts artifacts: 'TestA
