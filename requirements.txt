@@ -1,3 +1,5 @@
 robotframework
 requests
 robotframework-requests
+robotframework-seleniumlibrary
+robotframework-datadriver
