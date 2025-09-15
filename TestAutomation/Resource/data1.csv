@@ -1,0 +1,4 @@
+﻿*** Test Cases ***,${username},${password}
+invalid username,qwerty,learning
+invalid password,rahulshettyacademy,qwerty
+special char,!@.{##},qwert!@.{#}

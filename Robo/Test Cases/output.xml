@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-15T01:19:37.835339" rpa="false" schemaversion="5">
+<suite id="s1" name="TC1" source="C:\Users\Vedaarth\PycharmProjects\PythonProject\Test Cases\TC1.robot">
+<test id="s1-t1" name="LoginTest" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:38.060061" level="INFO">Opening browser 'chrome' to base url 'https://demo.nopcommerce.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-15T01:19:38.059775" elapsed="3.801509"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-15T01:19:41.861773" elapsed="0.030233"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.15seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-03-15T01:19:41.892924" elapsed="0.000474"/>
+</kw>
+<kw name="Get Selenium Implicit Wait" owner="SeleniumLibrary">
+<doc>Gets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-03-15T01:19:41.894155" elapsed="0.000228"/>
+</kw>
+<kw name="loginToApplication">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:41.896681" level="INFO">Clicking link 'xpath://a[@class='ico-login']'.</msg>
+<arg>xpath://a[@class='ico-login']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:41.895475" elapsed="0.963826"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:42.859987" level="INFO">Typing text 'deepanshuagrawal93@gmail.com' into text field 'id:Email'.</msg>
+<msg time="2025-03-15T01:19:43.361985" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-03-15T01:19:43.362458" level="FAIL">Element with locator 'id:Email' not found.</msg>
+<arg>id:Email</arg>
+<arg>deepanshuagrawal93@gmail.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-15T01:19:42.859624" elapsed="0.512514">Element with locator 'id:Email' not found.</status>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id:Password</arg>
+<arg>@Deep123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-15T01:19:43.372632" elapsed="0.000092"/>
+</kw>
+<kw name="Get Selenium Implicit Wait" owner="SeleniumLibrary">
+<doc>Gets the implicit wait value used by Selenium.</doc>
+<status status="NOT RUN" start="2025-03-15T01:19:43.373447" elapsed="0.000086"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>xpath://input[@class='button-1 login-button']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-15T01:19:43.374037" elapsed="0.000125"/>
+</kw>
+<status status="FAIL" start="2025-03-15T01:19:41.894953" elapsed="1.479604">Element with locator 'id:Email' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-03-15T01:19:43.375351" elapsed="0.000075"/>
+</kw>
+<status status="FAIL" start="2025-03-15T01:19:38.058747" elapsed="5.317412">Element with locator 'id:Email' not found.</status>
+</test>
+<status status="FAIL" start="2025-03-15T01:19:37.836506" elapsed="5.542586"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TC1" id="s1" pass="0" fail="1" skip="0">TC1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

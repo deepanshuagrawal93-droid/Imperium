@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-15T01:18:55.977620" rpa="false" schemaversion="5">
+<suite id="s1" name="TC001" source="C:\Users\Vedaarth\PycharmProjects\PythonProject\saucedemo practice\TC001.robot">
+<test id="s1-t1" name="SauceTestE2E" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:56.204976" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-15T01:18:56.204712" elapsed="1.996619"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.202040" elapsed="0.028844"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0.05seconds</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.231300" elapsed="0.000300"/>
+</kw>
+<kw name="loginToApplication">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:58.233297" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>id:user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.232771" elapsed="0.343515"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:58.577026" level="INFO">Typing text 'secret_sauce' into text field 'id:password'.</msg>
+<arg>id:password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.576655" elapsed="0.276927"/>
+</kw>
+<kw name="Get Selenium Implicit Wait" owner="SeleniumLibrary">
+<doc>Gets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.854189" elapsed="0.000361"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:58.855162" level="INFO">Clicking button 'login-button'.</msg>
+<arg>login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:18:58.854841" elapsed="0.288317"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:18:58.232141" elapsed="0.911223"/>
+</kw>
+<kw name="SortingProducts">
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:59.144178" level="INFO">Selecting options from selection list 'xpath://select[@class='product_sort_container']' by label Price (low to high).</msg>
+<arg>xpath://select[@class='product_sort_container']</arg>
+<arg>Price (low to high)</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-03-15T01:18:59.144012" elapsed="0.538493"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:18:59.143752" elapsed="0.539141"/>
+</kw>
+<kw name="AddingItemsToCart">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:18:59.685442" level="INFO">Clicking button 'name:add-to-cart-sauce-labs-onesie'.</msg>
+<arg>name:add-to-cart-sauce-labs-onesie</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:18:59.684994" elapsed="0.406374"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:00.091749" level="INFO">Clicking button 'name:add-to-cart-sauce-labs-fleece-jacket'.</msg>
+<arg>name:add-to-cart-sauce-labs-fleece-jacket</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:00.091568" elapsed="0.354307"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:18:59.684069" elapsed="0.762122"/>
+</kw>
+<kw name="GoToCart&amp;Checkout">
+<kw name="Click Link" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:00.448453" level="INFO">Clicking link 'xpath://a[@class='shopping_cart_link']'.</msg>
+<arg>xpath://a[@class='shopping_cart_link']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:00.447983" elapsed="0.233256"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:00.682114" level="INFO">Clicking button 'name:checkout'.</msg>
+<arg>name:checkout</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:00.681689" elapsed="0.395116"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:19:00.447301" elapsed="0.629792"/>
+</kw>
+<kw name="CheckoutInfo&amp;Continue">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:01.079301" level="INFO">Typing text 'Hello' into text field 'id:first-name'.</msg>
+<arg>id:first-name</arg>
+<arg>Hello</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:01.078900" elapsed="0.288363"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:01.368153" level="INFO">Typing text 'World' into text field 'id:last-name'.</msg>
+<arg>id:last-name</arg>
+<arg>World</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:01.367755" elapsed="0.315673"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:01.684252" level="INFO">Typing text '121212' into text field 'id:postal-code'.</msg>
+<arg>id:postal-code</arg>
+<arg>121212</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:01.683841" elapsed="0.295769"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-15T01:19:01.980529" level="INFO">Clicking button 'id:continue'.</msg>
+<arg>id:continue</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-15T01:19:01.980073" elapsed="0.262349"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:19:01.078187" elapsed="1.164650"/>
+</kw>
+<kw name="Close Window" owner="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" start="2025-03-15T01:19:02.243930" elapsed="0.175289"/>
+</kw>
+<status status="PASS" start="2025-03-15T01:18:56.203768" elapsed="6.216455"/>
+</test>
+<status status="PASS" start="2025-03-15T01:18:55.978851" elapsed="6.442790"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TC001" id="s1" pass="1" fail="0" skip="0">TC001</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

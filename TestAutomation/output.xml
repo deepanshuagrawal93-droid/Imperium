@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-09-15T00:05:45.604644" rpa="false" schemaversion="5">
+<suite id="s1" name="APIAutomation" source="C:\Users\Vedaarth\PycharmProjects\PythonProject\TestAutomation\APIAutomation.robot">
+<test id="s1-t1" name="API Automation" line="11">
+<kw name="To add the book in the library">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-09-15T00:05:45.990835" level="INFO">${req_body} = {'name': 'Learn Appium Automation Testing1', 'isbn': 'abc127694', 'aisle': '0019943', 'author': 'VedAA'}</msg>
+<var>${req_body}</var>
+<arg>name=Learn Appium Automation Testing1</arg>
+<arg>isbn=abc127694</arg>
+<arg>aisle=0019943</arg>
+<arg>author=VedAA</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-09-15T00:05:45.990530" elapsed="0.000344"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-09-15T00:05:46.464229" level="INFO">POST Request : url=http://216.10.245.166/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '104', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Learn Appium Automation Testing1", "isbn": "abc127694", "aisle": "0019943", "author": "VedAA"}' 
+ </msg>
+<msg time="2025-09-15T00:05:46.464425" level="INFO">POST Response : url=http://216.10.245.166/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 14 Sep 2025 18:35:46 GMT', 'Server': 'Apache', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Transfer-Encoding': 'chunked', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"successfully added","ID":"abc1276940019943"} 
+ </msg>
+<msg time="2025-09-15T00:05:46.464660" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${baseURL}/Library/Addbook.php</arg>
+<arg>json=${req_body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-09-15T00:05:45.991000" elapsed="0.473706"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-15T00:05:46.465800" level="INFO">{'Msg': 'successfully added', 'ID': 'abc1276940019943'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.464940" elapsed="0.000946"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.466085" elapsed="0.000688"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-09-15T00:05:46.467570" level="INFO">${book_id} = abc1276940019943</msg>
+<var>${book_id}</var>
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.466935" elapsed="0.000675"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-09-15T00:05:46.468021" level="INFO">${book_id} = abc1276940019943</msg>
+<arg>${book_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.467785" elapsed="0.000291"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-15T00:05:46.468349" level="INFO">abc1276940019943</msg>
+<arg>${book_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.468196" elapsed="0.000204"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>successfully added</arg>
+<arg>${response.json()}[Msg]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.468512" elapsed="0.000591"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Successfully Added</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-09-15T00:05:46.469244" elapsed="0.000224"/>
+</kw>
+<status status="PASS" start="2025-09-15T00:05:45.989783" elapsed="0.479783"/>
+</kw>
+<status status="PASS" start="2025-09-15T00:05:45.988831" elapsed="0.480882"/>
+</test>
+<doc>To Validate the API</doc>
+<status status="PASS" start="2025-09-15T00:05:45.605856" elapsed="0.864470"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="APIAutomation" id="s1" pass="1" fail="0" skip="0">APIAutomation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
