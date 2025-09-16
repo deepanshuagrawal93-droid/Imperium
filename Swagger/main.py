@@ -1,75 +1,71 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import List
 import json
 import os
 
-app = FastAPI(title="Mini DB API")
-
+app = FastAPI(title="Mini Database API", version="1.1")
 DATA_FILE = "data.json"
 
-# Ensure data file exists
-if not os.path.exists(DATA_FILE):
-    with open(DATA_FILE, "w") as f:
-        json.dump([], f)
-
-# Pydantic model for validation
+# Pydantic model for an item (without ID for POST)
 class Item(BaseModel):
-    id: int
     name: str
-    price: float
+    description: str = None
 
-# Helper functions
+# Utility functions
 def read_data():
+    if not os.path.exists(DATA_FILE) or os.path.getsize(DATA_FILE) == 0:
+        return []
     with open(DATA_FILE, "r") as f:
         return json.load(f)
 
 def write_data(data):
     with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=4)
 
-# Create / Add item
-@app.post("/add_item", response_model=Item)
-def add_item(item: Item):
-    data = read_data()
-    if any(existing["id"] == item.id for existing in data):
-        raise HTTPException(status_code=400, detail="Item ID already exists")
-    data.append(item.dict())
-    write_data(data)
-    return item
+def get_next_id(items):
+    if not items:
+        return 1
+    return max(item["id"] for item in items) + 1
 
-# Read / Get all items
-@app.get("/get_items", response_model=List[Item])
+# Routes
+@app.get("/items", summary="Get all items")
 def get_items():
     return read_data()
 
-# Read / Get item by id
-@app.get("/get_item/{item_id}", response_model=Item)
+@app.get("/items/{item_id}", summary="Get an item by ID")
 def get_item(item_id: int):
-    data = read_data()
-    for item in data:
+    items = read_data()
+    for item in items:
         if item["id"] == item_id:
             return item
     raise HTTPException(status_code=404, detail="Item not found")
 
-# Update item
-@app.put("/update_item/{item_id}", response_model=Item)
+@app.post("/items", summary="Add a new item")
+def add_item(item: Item):
+    items = read_data()
+    new_item = item.dict()
+    new_item["id"] = get_next_id(items)
+    items.append(new_item)
+    write_data(items)
+    return {"message": "Item added successfully", "item": new_item}
+
+@app.put("/items/{item_id}", summary="Update an existing item")
 def update_item(item_id: int, updated_item: Item):
-    data = read_data()
-    for i, item in enumerate(data):
+    items = read_data()
+    for i, item in enumerate(items):
         if item["id"] == item_id:
-            data[i] = updated_item.dict()
-            write_data(data)
-            return updated_item
+            items[i]["name"] = updated_item.name
+            items[i]["description"] = updated_item.description
+            write_data(items)
+            return {"message": "Item updated successfully", "item": items[i]}
     raise HTTPException(status_code=404, detail="Item not found")
 
-# Delete item
-@app.delete("/delete_item/{item_id}")
+@app.delete("/items/{item_id}", summary="Delete an item")
 def delete_item(item_id: int):
-    data = read_data()
-    for i, item in enumerate(data):
+    items = read_data()
+    for i, item in enumerate(items):
         if item["id"] == item_id:
-            deleted = data.pop(i)
-            write_data(data)
-            return {"detail": f"Deleted item {deleted}"}
+            del items[i]
+            write_data(items)
+            return {"message": "Item deleted successfully"}
     raise HTTPException(status_code=404, detail="Item not found")
